@@ -19,15 +19,13 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var student : Student ? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.menu_dashboard, R.id.menu_record, R.id.menu_academic,R.id.menu_enrollment,R.id.menu_grade,R.id.menu_chat,R.id.menu_profile,R.id.menu_logout

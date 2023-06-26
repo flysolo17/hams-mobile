@@ -41,6 +41,17 @@ class AuthViewModel constructor(
     private val _findUserByEmail = MutableLiveData<UiState<Student>>()
     val findUserByEmail : LiveData<UiState<Student>> = _findUserByEmail
 
+    private val _resetPassword = MutableLiveData<UiState<String>>()
+    val resetPassword : LiveData<UiState<String>> = _resetPassword
+
+
+    private val _reauthenticate= MutableLiveData<UiState<FirebaseUser>>()
+    val reauthenticate : LiveData<UiState<FirebaseUser>> = _reauthenticate
+
+
+    private val _changePassword = MutableLiveData<UiState<String>>()
+    val changePassword : LiveData<UiState<String>> = _changePassword
+
 
     fun login(email: String,password : String) {
         authService.login(email,password) {
@@ -66,6 +77,21 @@ class AuthViewModel constructor(
     fun findStudentByEmail(email: String) {
         authService.getUserByEmail(email) {
             _findUserByEmail.postValue(it)
+        }
+    }
+    fun forgotPassword(email: String) {
+        authService.resetPassword(email) {
+            _resetPassword.postValue(it)
+        }
+    }
+    fun changePassword(user: FirebaseUser,password: String) {
+        authService.changePassword(user,password) {
+            _changePassword.postValue(it)
+        }
+    }
+    fun reauthenticate(user: FirebaseUser,email: String,password: String) {
+        authService.reAuthenticateAccount(user,email,password) {
+            _reauthenticate.postValue(it)
         }
     }
     companion object {

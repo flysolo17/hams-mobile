@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bryll.hams.R
 import com.bryll.hams.databinding.FragmentProfileBinding
 import com.bryll.hams.models.Student
@@ -40,6 +41,9 @@ class ProfileFragment : Fragment() {
             authViewModel.findStudentByEmail(it.email!!)
         }
         observers()
+        binding.buttonChangePassword.setOnClickListener {
+            findNavController().navigate(R.id.action_menu_profile_to_changePasswordFragment)
+        }
     }
     private fun observers() {
         authViewModel.findUserByEmail.observe(viewLifecycleOwner) {

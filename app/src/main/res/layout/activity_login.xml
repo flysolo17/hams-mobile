@@ -29,18 +29,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/layoutStudentID"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/inputStudentID"
                 android:inputType="number"
+
                 android:hint="ID number"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:id="@+id/layoutPassword"
             android:layout_height="wrap_content"
+            app:endIconMode="password_toggle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:errorEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -54,18 +58,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="Forgot Password"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:id="@+id/buttonForgotPassword"
             style="@style/Widget.MaterialComponents.Button.TextButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:id="@+id/buttonLoggedIn"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
             android:text="Login"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Signup"
             android:padding="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
             android:id="@+id/buttonSignUp"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
     </LinearLayout>

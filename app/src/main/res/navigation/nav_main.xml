@@ -43,7 +43,11 @@
         android:id="@+id/menu_profile"
         android:name="com.bryll.hams.views.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_menu_profile_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/enrollmentFormFragment"
         android:name="com.bryll.hams.views.enrollment.EnrollmentFormFragment"
@@ -58,4 +62,9 @@
         android:name="com.bryll.hams.views.auth.Logout"
         android:label="Logout"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.bryll.hams.views.auth.ChangePasswordFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

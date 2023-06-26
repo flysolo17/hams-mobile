@@ -46,6 +46,12 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         observers()
+        binding.buttonForgotPassword.setOnClickListener {
+            val dialog = ForgotPasswordFragment()
+            if (!dialog.isAdded) {
+                dialog.show(supportFragmentManager,"Forgot Password")
+            }
+        }
     }
     private fun observers() {
         authViewModel.login.observe(this) {
@@ -58,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
                     loadingDialog.showDialog("Logging in ....")
                 }
                 is UiState.onSuccess -> {
+                    loadingDialog.closeDialog()
                     updateUI(it.data)
                 }
             }
