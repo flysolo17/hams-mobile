@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/menu_dashboard">
+
+    <fragment
+        android:id="@+id/menu_dashboard"
+        android:name="com.bryll.hams.views.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/menu_record"
+        android:name="com.bryll.hams.views.RecordFragment"
+        android:label="My Record"
+        tools:layout="@layout/fragment_record" />
+    <fragment
+        android:id="@+id/menu_academic"
+        android:name="com.bryll.hams.views.AcademicFragment"
+        android:label="Academic"
+        tools:layout="@layout/fragment_academic" />
+    <fragment
+        android:id="@+id/menu_enrollment"
+        android:name="com.bryll.hams.views.enrollment.EnrollmentFragment"
+        android:label="Enrollment"
+        tools:layout="@layout/fragment_enrollment" >
+        <action
+            android:id="@+id/action_menu_enrollment_to_enrollmentFormFragment"
+            app:destination="@id/enrollmentFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu_grade"
+        android:name="com.bryll.hams.views.GradeFragment"
+        android:label="Grade"
+        tools:layout="@layout/fragment_grade" />
+    <fragment
+        android:id="@+id/menu_chat"
+        android:name="com.bryll.hams.views.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/menu_profile"
+        android:name="com.bryll.hams.views.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/enrollmentFormFragment"
+        android:name="com.bryll.hams.views.enrollment.EnrollmentFormFragment"
+        android:label="Enrollment Form"
+        tools:layout="@layout/fragment_enrollment_form" >
+        <argument
+            android:name="student"
+            app:argType="com.bryll.hams.models.Student" />
+    </fragment>
+    <dialog
+        android:id="@+id/menu_logout"
+        android:name="com.bryll.hams.views.auth.Logout"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout" />
+</navigation>

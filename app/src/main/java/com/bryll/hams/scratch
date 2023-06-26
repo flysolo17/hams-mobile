@@ -1,0 +1,19 @@
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                android:id="@+id/layoutPhone"
+                app:counterMaxLength="10"
+                app:prefixText="+63"
+                app:errorEnabled="true"
+                app:endIconMode="clear_text"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:helperText="Ex. 9123434657">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inputPhone"
+                    android:inputType="phone"
+                    android:hint="@string/phone_number"
+                    android:maxLength="10"/>
+            </com.google.android.material.textfield.TextInputLayout>

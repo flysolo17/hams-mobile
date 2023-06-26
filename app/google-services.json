@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "426272112105",
+    "project_id": "hams-50519",
+    "storage_bucket": "hams-50519.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426272112105:android:eea83caf01d2b87dccdf78",
+        "android_client_info": {
+          "package_name": "com.bryll.hams"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426272112105-9d5oa50sd00slj6k1ana5vjunv3niqf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbrNZkj7t0w18NDWNq8YOjEk4LbPvinhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426272112105-9d5oa50sd00slj6k1ana5vjunv3niqf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

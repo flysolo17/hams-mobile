@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard"/>
+    <item android:id="@+id/menu_record"
+        android:title="My Record"
+        android:icon="@drawable/ic_record"/>
+
+    <item android:id="@+id/menu_academic"
+        android:title="Academic"
+        android:icon="@drawable/ic_dashboard"/>
+    <item android:id="@+id/menu_enrollment"
+        android:title="Enrollment"
+        android:icon="@drawable/ic_enrollment"/>
+    <item android:id="@+id/menu_grade"
+        android:title="Grade"
+        android:icon="@drawable/ic_grades"/>
+
+    <item android:id="@+id/menu_chat"
+        android:title="Chat"
+        android:icon="@drawable/ic_chat"/>
+
+
+    <item android:id="@+id/menu_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_user"/>
+    <item android:id="@+id/menu_logout"
+        android:title="Logout"
+        android:icon="@drawable/baseline_logout_24"/>
+
+</menu>
