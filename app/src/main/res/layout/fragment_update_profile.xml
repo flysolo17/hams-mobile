@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.profile.ProfileFragment">
+    tools:context=".views.profile.UpdateProfileFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:id="@+id/imageProfile"
-            android:src="@drawable/profile"
+            android:src="@drawable/background"
             android:scaleType="centerCrop"
             />
         <TextView
@@ -46,13 +46,13 @@
 
             <Button
                 android:id="@+id/buttonChangePassword"
-                android:padding="10dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Change Password"
-                android:backgroundTint="#EF5350" />
+                android:backgroundTint="#66BB6A"
+                android:padding="10dp"
+                android:text="Change Profile" />
 
             <Button
                 android:id="@+id/buttonEdit"
@@ -64,7 +64,89 @@
                 android:drawableLeft="@drawable/baseline_edit_24"
                 android:drawableTint="#66BB6A" />
         </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/card">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Primary Information"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/purple_700"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/firstname"
+                android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/inputFirstname"
+                android:background="@null"
+                android:hint="@string/firstname"
+                android:inputType="text" />
+        </LinearLayout>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/middlename"
+                android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/inputMiddlename"
+                android:background="@null"
+                android:hint="@string/middlename"
+                android:inputType="text" />
+        </LinearLayout>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lastname"
+                android:textColor="@color/black"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/inputLastname"
+                android:background="@null"
+                android:hint="@string/lastname"
+                android:inputType="text" />
+        </LinearLayout>
+
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -83,27 +165,28 @@
                     android:layout_height="wrap_content"
                     android:text="@string/other_information"
                     android:layout_margin="10dp"
-
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/purple_700"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="@string/email"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
                         android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textEmaill"
-                        />
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/inputEmail"
+                        android:background="@null"
+                        android:enabled="false"
+                        android:hint="@string/email"
+                        android:inputType="none" />
+
                 </LinearLayout>
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -112,20 +195,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/birthday"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
+                        android:text="@string/date_of_birth"
                         android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textBirthday"
-                        />
+                        android:textColor="@color/black"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:id="@+id/inputBirthday"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:hint="@string/date_of_birth"
+                            android:inputType="none" />
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.Material3.Button.IconButton"
+                            app:icon="@drawable/baseline_calendar_month_24"
+                            />
+                    </LinearLayout>
+
                 </LinearLayout>
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -134,20 +230,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/gender"
                         android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textGender"
-                        />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:id="@+id/layoutGender">
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:id="@+id/inputGender"
+                            android:hint="@string/select_gender" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -157,21 +258,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/nationality"
 
+                        android:text="@string/nationality"
                         android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="@string/na"
-                        android:id="@+id/textNationality"
-                        />
+                        android:id="@+id/inputNationality"
+                        android:background="@null"
+                        android:hint="@string/nationality"
+                        android:inputType="text" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -204,20 +304,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Name"
+                        android:text="@string/fullname"
                         android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textContactName"
-                        />
+                        android:id="@+id/inputContactFullname"
+                        android:background="@null"
+                        android:hint="@string/fullname"
+                        android:inputType="text" />
+                </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact"
+                        android:textColor="@color/black"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/inputContactNumber"
+                        android:background="@null"
+                        android:hint="@string/nationality"
+                        android:inputType="text" />
                 </LinearLayout>
                 <com.google.android.material.divider.MaterialDivider
                     android:layout_width="match_parent"
@@ -231,29 +351,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Contact #"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textContactNumber"
-                        />
-                </LinearLayout>
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Contact Type"
+                        android:text="@string/contact_type"
                         android:textColor="@color/black"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -265,7 +363,28 @@
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_medium"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_medium"
+                style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        </LinearLayout>
     </LinearLayout>
-
 </androidx.core.widget.NestedScrollView>

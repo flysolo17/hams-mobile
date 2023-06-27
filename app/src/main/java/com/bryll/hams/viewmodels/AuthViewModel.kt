@@ -1,5 +1,6 @@
 package com.bryll.hams.viewmodels
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.LiveData
@@ -52,6 +53,12 @@ class AuthViewModel constructor(
     private val _changePassword = MutableLiveData<UiState<String>>()
     val changePassword : LiveData<UiState<String>> = _changePassword
 
+    private val _uploadProfile = MutableLiveData<UiState<String>>()
+    val uploadProfile : LiveData<UiState<String>> = _uploadProfile
+
+
+    private val _updateAccount = MutableLiveData<UiState<String>>()
+    val updateAccount : LiveData<UiState<String>> = _updateAccount
 
     fun login(email: String,password : String) {
         authService.login(email,password) {
@@ -94,6 +101,18 @@ class AuthViewModel constructor(
             _reauthenticate.postValue(it)
         }
     }
+    fun uploadProfile(studentID : String,uri :Uri,type : String) {
+        authService.uploadProfile(studentID,uri,type) {
+            _uploadProfile.postValue(it)
+        }
+    }
+    fun updateAccount(student: Student) {
+        authService.updateAccount(student) {
+            _updateAccount.postValue(it)
+        }
+    }
+
+
     companion object {
         fun provideFactory(
             myRepository: AuthServiceImpl,

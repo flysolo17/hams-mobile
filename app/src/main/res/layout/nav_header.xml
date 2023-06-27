@@ -29,8 +29,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textEmail"
-            android:text="juan@gmail.com"
+            android:id="@+id/textStudentID"
+            android:text=""
             style="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/black"/>
     </LinearLayout>

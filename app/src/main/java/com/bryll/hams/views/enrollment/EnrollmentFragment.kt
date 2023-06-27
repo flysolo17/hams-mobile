@@ -25,6 +25,7 @@ import com.bryll.hams.viewmodels.EnrollmentViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 
 class EnrollmentFragment : Fragment() {
@@ -32,7 +33,7 @@ class EnrollmentFragment : Fragment() {
     private lateinit var binding : FragmentEnrollmentBinding
     private lateinit var loadingDialog: LoadingDialog
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(),FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(),FirebaseFirestore.getInstance(), FirebaseStorage.getInstance()), this)}
     private var student : Student? = null
     private lateinit var enrollmentAdapter: EnrollmentAdapter
     override fun onCreateView(

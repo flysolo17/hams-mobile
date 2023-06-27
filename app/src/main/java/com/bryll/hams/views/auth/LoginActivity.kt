@@ -15,12 +15,13 @@ import com.bryll.hams.viewmodels.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var  binding : ActivityLoginBinding
 
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),FirebaseStorage.getInstance()), this)}
     private lateinit var loadingDialog : LoadingDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

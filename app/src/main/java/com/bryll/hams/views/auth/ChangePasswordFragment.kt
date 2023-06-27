@@ -17,12 +17,14 @@ import com.bryll.hams.utils.UiState
 import com.bryll.hams.viewmodels.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 
 class ChangePasswordFragment : Fragment() {
     private lateinit var binding : FragmentChangePasswordBinding
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
+            FirebaseStorage.getInstance()), this)}
     private lateinit var loadingDialog : LoadingDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

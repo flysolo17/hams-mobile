@@ -1,4 +1,4 @@
-package com.bryll.hams.views
+package com.bryll.hams.views.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bryll.hams.R
 import com.bryll.hams.databinding.FragmentProfileBinding
+
 import com.bryll.hams.models.Student
 import com.bryll.hams.services.AuthServiceImpl
 import com.bryll.hams.utils.LoadingDialog
@@ -17,14 +18,17 @@ import com.bryll.hams.utils.UiState
 import com.bryll.hams.viewmodels.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding : FragmentProfileBinding
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
+            FirebaseStorage.getInstance()), this)}
     private lateinit var loadingDialog : LoadingDialog
+    private var _student :Student ? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +48,13 @@ class ProfileFragment : Fragment() {
         binding.buttonChangePassword.setOnClickListener {
             findNavController().navigate(R.id.action_menu_profile_to_changePasswordFragment)
         }
+        binding.buttonEdit.setOnClickListener {
+            _student?.let {student->
+                val directions = ProfileFragmentDirections.actionMenuProfileToUpdateProfileFragment(student = student)
+                findNavController().navigate(directions)
+            }
+
+        }
     }
     private fun observers() {
         authViewModel.findUserByEmail.observe(viewLifecycleOwner) {
@@ -57,7 +68,11 @@ class ProfileFragment : Fragment() {
                 }
                 is UiState.onSuccess -> {
                     loadingDialog.closeDialog()
-                    displayInformation(it.data)
+                    _student = it.data
+                    _student?.let { student ->
+                        displayInformation(student)
+                    }
+
                 }
             }
         }
@@ -70,7 +85,6 @@ class ProfileFragment : Fragment() {
         binding.textGender.text = student.studentInfo?.gender?.name ?: "NA"
         binding.textContactName.text = student.contacts?.name ?: "NA"
         binding.textContactNumber.text = student.contacts?.phone ?: "NA"
-
         binding.textContactType.text = student.contacts?.type?.name ?: "NA"
         binding.textEmaill.text = student.email
     }

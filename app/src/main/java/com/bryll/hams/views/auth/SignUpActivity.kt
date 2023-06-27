@@ -18,6 +18,7 @@ import com.bryll.hams.utils.UiState
 import com.bryll.hams.viewmodels.AuthViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import java.util.Date
 
 class SignUpActivity : AppCompatActivity() {
@@ -25,7 +26,8 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var binding : ActivitySignUpBinding
     lateinit var loadingDialog: LoadingDialog
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
+            FirebaseStorage.getInstance()), this)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)

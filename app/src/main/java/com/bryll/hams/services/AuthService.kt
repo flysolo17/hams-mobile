@@ -1,5 +1,6 @@
 package com.bryll.hams.services
 
+import android.net.Uri
 import com.bryll.hams.models.Student
 import com.bryll.hams.utils.UiState
 import com.google.firebase.auth.FirebaseUser
@@ -14,5 +15,5 @@ interface AuthService {
     fun resetPassword(email : String,result: (UiState<String>) -> Unit)
     fun changePassword(user: FirebaseUser, password: String, result: (UiState<String>) -> Unit)
     fun updateAccount(student: Student ,result: (UiState<String>) -> Unit)
-
+    fun uploadProfile(studentID : String,uri : Uri,type : String,result: (UiState<String>) -> Unit)
 }

@@ -1,10 +1,19 @@
 package com.bryll.hams.utils
 
+import android.content.ContentResolver
+import android.content.Context
+import android.net.Uri
+import android.webkit.MimeTypeMap
 import com.bryll.hams.models.Curriculum
 import com.bryll.hams.models.Grade
 import com.bryll.hams.models.GradeStatus
-import com.bryll.hams.models.Subjects
 
+
+fun getImageTypeFromUri(context: Context, imageUri: Uri?): String? {
+    val contentResolver: ContentResolver = context.contentResolver
+    val mimeTypeMap = MimeTypeMap.getSingleton()
+    return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageUri!!))
+}
 
 fun getSubjectBySem(curriculums : List<Curriculum> ,sem : Int) : List<Curriculum> {
     return  curriculums.filter { it.sem== sem }

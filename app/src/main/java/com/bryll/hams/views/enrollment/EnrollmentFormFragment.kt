@@ -32,6 +32,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import java.util.UUID
 
 
@@ -43,7 +44,7 @@ class EnrollmentFormFragment : Fragment() {
         EnrollmentServiceImpl(FirebaseFirestore.getInstance()), this)}
 
     private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(),FirebaseFirestore.getInstance()), this)}
+        AuthServiceImpl(FirebaseAuth.getInstance(),FirebaseFirestore.getInstance(), FirebaseStorage.getInstance()), this)}
     private lateinit var loadingDialog: LoadingDialog
     private lateinit var classesList : List<Classes>
     private lateinit var classesAdapter : ArrayAdapter<*>

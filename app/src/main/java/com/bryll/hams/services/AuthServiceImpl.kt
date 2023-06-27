@@ -1,5 +1,6 @@
 package com.bryll.hams.services
 
+import android.net.Uri
 import com.bryll.hams.models.Student
 import com.bryll.hams.utils.Constants
 import com.bryll.hams.utils.UiState
@@ -7,8 +8,11 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import org.checkerframework.checker.guieffect.qual.UI
 
-class AuthServiceImpl(private val firebaseAuth: FirebaseAuth, private val firestore : FirebaseFirestore) : AuthService {
+class AuthServiceImpl(private val firebaseAuth: FirebaseAuth, private val firestore : FirebaseFirestore,private val storage: FirebaseStorage) : AuthService {
     var student : Student? = null
     override fun signup(email: String,password: String,student: Student, result: (UiState<Student>) -> Unit) {
         result.invoke(UiState.onLoading)
@@ -165,6 +169,32 @@ class AuthServiceImpl(private val firebaseAuth: FirebaseAuth, private val firest
 
 
     override fun updateAccount(student: Student, result: (UiState<String>) -> Unit) {
-        TODO("Not yet implemented")
+        student.id?.let {
+            result.invoke(UiState.onLoading)
+            firestore.collection(Constants.STUDENT_TABLE)
+                .document(it)
+                .set(student)
+                .addOnCompleteListener { task->
+                    if (task.isSuccessful) {
+                        result.invoke(UiState.onSuccess("Successfully Updated!"))
+                    } else {
+                        result.invoke(UiState.onFailed("Failed to update profile"))
+                    }
+                }.addOnFailureListener { e->
+                    result.invoke(UiState.onFailed(e.message!!))
+                }
+        }
+    }
+
+    override fun uploadProfile(studentID: String, uri: Uri,type : String, result: (UiState<String>) -> Unit) {
+        val reference: StorageReference = storage.getReference(Constants.STUDENT_TABLE)
+            .child(studentID)
+            .child(System.currentTimeMillis().toString() + "." + type)
+        result.invoke(UiState.onLoading)
+        reference.putFile(uri).addOnSuccessListener {
+            reference.downloadUrl.addOnSuccessListener { uri1 ->
+                result.invoke(UiState.onSuccess( uri1.toString()))
+            }
+        }.addOnFailureListener { e -> result.invoke(UiState.onFailed(e.message!!)) }
     }
 }
