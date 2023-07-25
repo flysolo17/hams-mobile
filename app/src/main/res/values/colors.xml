@@ -11,4 +11,6 @@
     <color name="purple_50">#EDE6FF</color>
     <color name="textPrimary">#F3EDF7</color>
     <color name="card">#eee</color>
+    <color name="background">#f8f9fa</color>
+    <color name="accent">#A5ADFC</color>
 </resources>

@@ -50,15 +50,22 @@
         <action
             android:id="@+id/action_menu_profile_to_updateProfileFragment"
             app:destination="@id/updateProfileFragment" />
+        <action
+            android:id="@+id/action_menu_profile_to_addAddress"
+            app:destination="@id/addAddress" />
+        <action
+            android:id="@+id/action_menu_profile_to_addContacts"
+            app:destination="@id/addContacts" />
+        <action
+            android:id="@+id/action_menu_profile_to_updateAccount"
+            app:destination="@id/updateAccount" />
     </fragment>
     <fragment
         android:id="@+id/enrollmentFormFragment"
         android:name="com.bryll.hams.views.enrollment.EnrollmentFormFragment"
         android:label="Enrollment Form"
         tools:layout="@layout/fragment_enrollment_form" >
-        <argument
-            android:name="student"
-            app:argType="com.bryll.hams.models.Student" />
+
     </fragment>
     <dialog
         android:id="@+id/menu_logout"
@@ -75,8 +82,27 @@
         android:name="com.bryll.hams.views.profile.UpdateProfileFragment"
         android:label="Edit Profile"
         tools:layout="@layout/fragment_update_profile" >
-        <argument
-            android:name="student"
-            app:argType="com.bryll.hams.models.Student" />
+
     </fragment>
+    <fragment
+        android:id="@+id/addAddress"
+        android:name="com.bryll.hams.views.addresses.AddAddress"
+        android:label="Create Address"
+        tools:layout="@layout/fragment_add_address" />
+    <fragment
+        android:id="@+id/addContacts"
+        android:name="com.bryll.hams.views.contacts.AddContacts"
+        android:label="Create Contacts"
+        tools:layout="@layout/fragment_add_contacts" />
+    <fragment
+        android:id="@+id/updateAccount"
+        android:name="com.bryll.hams.views.auth.UpdateAccount"
+        android:label="Update Account"
+        tools:layout="@layout/fragment_update_account">
+
+        <argument
+            android:name="students"
+            app:argType="com.bryll.hams.models.Students" />
+    </fragment>
+
 </navigation>

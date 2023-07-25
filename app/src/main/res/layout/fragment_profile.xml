@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/card"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.profile.ProfileFragment">
@@ -10,69 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <com.google.android.material.imageview.ShapeableImageView
-            app:shapeAppearance="@style/CornerCut"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            android:id="@+id/imageProfile"
-            android:src="@drawable/profile"
-            android:scaleType="centerCrop"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textFullname"
-            android:text="@string/juan_dela_cruz"
-            android:layout_gravity="center"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="@color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textStudentID"
-            android:text="NA"
-            android:layout_gravity="center"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/black"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonChangePassword"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:text="Change Password"
-                android:backgroundTint="#EF5350" />
-
-            <Button
-                android:id="@+id/buttonEdit"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:backgroundTint="#E8F5E9"
-                android:drawableLeft="@drawable/baseline_edit_24"
-                android:drawableTint="#66BB6A" />
-        </LinearLayout>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/card">
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/white"
+            android:layout_margin="10dp">
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearance="@style/CornerCut"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_margin="10dp"
+                android:id="@+id/imageProfile"
+                android:src="@drawable/profile"
+                android:scaleType="centerCrop"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,11 +37,169 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/other_information"
-                    android:layout_margin="10dp"
-
+                    android:id="@+id/textFullname"
+                    android:text="@string/juan_dela_cruz"
+                    style="@style/TextAppearance.AppCompat.Title"
                     android:fontFamily="@font/poppins_bold"
-                    android:textColor="@color/purple_700"/>
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textStudentID"
+                    android:text="NA"
+
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/black"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonPickImage"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#E8EAF6"
+                        android:drawableTint="#03A9F4"
+                        android:drawableLeft="@drawable/baseline_add_a_photo_24"
+                         />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonChangePassword"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#FFEBEE"
+                        android:drawableTint="#EF5350"
+                        android:drawableLeft="@drawable/ic_edit_password" />
+
+                    <Button
+                        android:id="@+id/buttonEdit"
+                        style="@style/Widget.Material3.Button.IconButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#E8F5E9"
+                        android:drawableLeft="@drawable/baseline_edit_24"
+                        android:drawableTint="#66BB6A" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:text="@string/other_information"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/purple_700"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/firstname"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/na"
+                        android:fontFamily="@font/poppins_medium"
+                        android:id="@+id/textFirstname"
+                        />
+                </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/middlename"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/na"
+                        android:fontFamily="@font/poppins_medium"
+                        android:id="@+id/textMiddleName"
+                        />
+                </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/lastname"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/na"
+                        android:fontFamily="@font/poppins_medium"
+                        android:id="@+id/textLastname"
+                        />
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/extension_name"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/na"
+                        android:fontFamily="@font/poppins_medium"
+                        android:id="@+id/textExtensionName"
+                        />
+                </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -112,6 +226,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/buttonUpdateBirthday"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="0dp"
@@ -119,12 +236,19 @@
                         android:layout_weight="1"
                         android:text="@string/birthday"
                         android:textColor="@color/black"/>
-                    <TextView
+
+                    <com.google.android.material.button.MaterialButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
                         android:id="@+id/textBirthday"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:text="@string/na"
+                        android:backgroundTint="#E8EAF6"
+                        android:drawableTint="#03A9F4"
+                        android:textColor="#03A9F4"
+                        app:cornerRadius="20dp"
+                        app:elevation="0dp"
+                        android:drawableLeft="@drawable/baseline_edit_24"
                         />
                 </LinearLayout>
                 <com.google.android.material.divider.MaterialDivider
@@ -176,95 +300,84 @@
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
 
 
-
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/card">
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/emergency_contact"
-                    android:layout_margin="10dp"
+                    android:text="@string/contacts"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/purple_700"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/buttonCreateContact"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Name"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textContactName"
-                        />
-                </LinearLayout>
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Contact #"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textContactNumber"
-                        />
-                </LinearLayout>
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Contact Type"
-                        android:textColor="@color/black"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/na"
-                        android:fontFamily="@font/poppins_medium"
-                        android:id="@+id/textContactType"
-                        />
-                </LinearLayout>
+                    android:backgroundTint="#E8F5E9"
+                    android:drawableLeft="@drawable/ic_add"
+                    android:drawableTint="#66BB6A" />
+
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutContacts"
+                android:orientation="vertical"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="@color/white"
+            android:layout_margin="10dp"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/purple_700"/>
+                <Button
+                    android:id="@+id/buttonAddAddress"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E8F5E9"
+                    android:drawableLeft="@drawable/ic_add"
+                    android:drawableTint="#66BB6A" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutAddresses"
+                android:orientation="vertical"/>
+        </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 

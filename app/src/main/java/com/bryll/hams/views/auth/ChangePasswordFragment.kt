@@ -5,26 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.bryll.hams.R
 import com.bryll.hams.databinding.FragmentChangePasswordBinding
-import com.bryll.hams.databinding.FragmentForgotPasswordBinding
-import com.bryll.hams.services.AuthServiceImpl
 import com.bryll.hams.utils.LoadingDialog
-import com.bryll.hams.utils.UiState
-import com.bryll.hams.viewmodels.AuthViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 
 
 class ChangePasswordFragment : Fragment() {
     private lateinit var binding : FragmentChangePasswordBinding
-    private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
-            FirebaseStorage.getInstance()), this)}
+//    private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
+//        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
+//            FirebaseStorage.getInstance()), this)}
     private lateinit var loadingDialog : LoadingDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,44 +38,10 @@ class ChangePasswordFragment : Fragment() {
             } else if (new != confirm) {
                 binding.layoutConfirmPassword.error = "Password does not match"
             } else {
-                FirebaseAuth.getInstance().currentUser?.let {
-                    authViewModel.reauthenticate(it,it.email!!,old)
-                }
+
             }
         }
-        observer()
+
     }
-    private fun observer() {
-        authViewModel.changePassword.observe(viewLifecycleOwner) {
-            when (it) {
-                is UiState.onFailed -> {
-                    loadingDialog.closeDialog()
-                    Toast.makeText(binding.root.context,it.message, Toast.LENGTH_SHORT).show()
-                }
-                UiState.onLoading -> {
-                    loadingDialog.showDialog("Changing password....")
-                }
-                is UiState.onSuccess -> {
-                    loadingDialog.closeDialog()
-                    Toast.makeText(binding.root.context,it.data,Toast.LENGTH_SHORT).show()
-                    findNavController().popBackStack()
-                }
-            }
-        }
-        authViewModel.reauthenticate.observe(viewLifecycleOwner) {
-            when (it) {
-                is UiState.onFailed -> {
-                    loadingDialog.closeDialog()
-                    Toast.makeText(binding.root.context,it.message, Toast.LENGTH_SHORT).show()
-                }
-                UiState.onLoading -> {
-                    loadingDialog.showDialog("Authenticating....")
-                }
-                is UiState.onSuccess -> {
-                    loadingDialog.closeDialog()
-                    authViewModel.changePassword(it.data, password = binding.inputNewPassword.text.toString())
-                }
-            }
-        }
-    }
+
 }

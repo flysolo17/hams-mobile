@@ -3,122 +3,109 @@ package com.bryll.hams.views.auth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.bryll.hams.R
+import com.bryll.hams.data.StudentRegistrationData
 import com.bryll.hams.databinding.ActivitySignUpBinding
-import com.bryll.hams.models.Contacts
 import com.bryll.hams.models.Gender
-import com.bryll.hams.models.Student
-import com.bryll.hams.models.StudentInformation
-import com.bryll.hams.models.StudentStatus
-import com.bryll.hams.services.AuthServiceImpl
 import com.bryll.hams.utils.LoadingDialog
 import com.bryll.hams.utils.UiState
-import com.bryll.hams.viewmodels.AuthViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
-import java.util.Date
+import com.bryll.hams.viewmodels.SignupViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
     private val gender = listOf("MALE","FEMALE")
     lateinit var binding : ActivitySignUpBinding
     lateinit var loadingDialog: LoadingDialog
-    private val authViewModel: AuthViewModel by viewModels {    AuthViewModel.provideFactory(
-        AuthServiceImpl(FirebaseAuth.getInstance(), FirebaseFirestore.getInstance(),
-            FirebaseStorage.getInstance()), this)}
+    private val signupViewModel by viewModels<SignupViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadingDialog = LoadingDialog(this)
+
         binding.inputGender.setAdapter(ArrayAdapter(this,R.layout.dropdown_items,gender))
         binding.buttonBack.setOnClickListener {
             finish()
         }
-        binding.buttonSignup.setOnClickListener {
-            verifyInputs()
+        binding.buttonSignUp.setOnClickListener {
+            verifyInputs()?.let {
+
+                signupViewModel.signUp(it)
+            }
         }
         observers()
+        binding.buttonSignIn.setOnClickListener {
+            finish()
+        }
     }
 
     private fun observers() {
-        authViewModel.signup.observe(this) { state ->
-            when (state) {
-                is UiState.onFailed -> {
+        signupViewModel.signUp.observe(this) { state ->
+            when(state) {
+                is UiState.FAILED -> {
                     loadingDialog.closeDialog()
-                    Toast.makeText(this,state.message,Toast.LENGTH_SHORT).show()
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle("Error")
+                        .setMessage(state.message)
+                        .setNegativeButton("Close") { dialog,_ ->
+                            dialog.dismiss()
+                        }.show()
                 }
-                is UiState.onLoading -> {
-                    loadingDialog.showDialog("Creating account.....")
+                is UiState.LOADING -> {
+                    loadingDialog.showDialog("Creating Account")
                 }
-                is UiState.onSuccess -> {
+                is UiState.SUCCESS -> {
                     loadingDialog.closeDialog()
-                    authViewModel.saveStudent(state.data)
+                    MaterialAlertDialogBuilder(this).setTitle("Success").setMessage(state.data.message)
+                        .setPositiveButton("Login") { dialog, _ ->
+                            dialog.dismiss().also {
+                                finish()
+                            }
+                        }
+                        .show()
                 }
             }
+        }
 
-        }
-        authViewModel.saveStudent.observe(this) { state->
-            when (state) {
-                is UiState.onFailed -> {
-                    loadingDialog.closeDialog()
-                    Toast.makeText(this,state.message,Toast.LENGTH_SHORT).show()
-                }
-                is UiState.onLoading -> {
-                    loadingDialog.showDialog("Saving student information.....")
-                }
-                is UiState.onSuccess -> {
-                    loadingDialog.closeDialog()
-                    finish()
-                    Toast.makeText(this,state.data,Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
     }
-
-    private fun verifyInputs() {
-        val lrn = binding.inputLRN.text.toString()
+    private fun verifyInputs()  : StudentRegistrationData ?{
         val firstname = binding.inputFirstname.text.toString()
-        val middlename = binding.inputMiddlename.text.toString()
+        val middlename = binding.inputMiddleName.text.toString()
         val lastname = binding.inputLastname.text.toString()
         val gender = binding.inputGender.text.toString()
-        val email = binding.inputEmail.text.toString()
+        val studentID = binding.inputStudentID.text.toString()
         val password = binding.inputPassword.text.toString()
-        if (lrn.isEmpty()) {
-            binding.layoutLRN.error = "enter LRN"
-        } else if (firstname.isEmpty()) {
+        val confirmPassword = binding.inputConfirmPassword.text.toString()
+        if (firstname.isEmpty()) {
             binding.layoutFirstname.error = "enter firstname"
         } else if (middlename.isEmpty()) {
             binding.layoutMiddlename.error = "enter middlename"
-        }  else if (lastname.isEmpty()) {
-            binding.layoutLastname.error = "enter firstname"
+        } else if (lastname.isEmpty()) {
+            binding.layoutLastname.error = "enter lastname"
         }  else if (gender.isEmpty()) {
             binding.layoutGender.error = "enter gender"
-        }  else if (email.isEmpty()) {
-            binding.layoutEmail.error = "enter email"
+        }   else if (studentID.isEmpty()) {
+            binding.layoutStudentID.error = "enter ID"
         }  else if (password.isEmpty()) {
             binding.layoutPassword.error = "enter password"
+        } else if (password.length < 7) {
+            binding.layoutPassword.error = "Password should have 7 characters or more."
+        } else if (password != confirmPassword) {
+            binding.layoutConfirmPassword.error = "password don't match"
         } else {
-            val student =  Student(
-                id = lrn,
-                email= email,
-                profile="",
-             studentInfo = StudentInformation(
-                 firstName = firstname,
-                 middleName = middlename,
-                 lastname = lastname,
-                 gender = if (gender.equals(Gender.MALE)) Gender.MALE else Gender.FEMALE,
-                 nationality = "Filipino",
-                 dob = null
-             ),
-             contacts = Contacts(null,null,null),
-             status  = StudentStatus.PRE_ENROLLED,
-             academics = listOf(),
-             createdAt = Date(),
-            )
-            authViewModel.signup(email,password, student = student)
+            return  StudentRegistrationData.Builder()
+                .setLRN(studentID)
+                .setFirstName(firstname)
+                .setMiddleName(middlename)
+                .setLastName(lastname)
+                .setGender(if (gender == Gender.MALE.name) 0 else 1)
+                .setPassword(password)
+                .build()
         }
+        return null
     }
 }

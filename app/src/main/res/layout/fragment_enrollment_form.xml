@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".views.enrollment.EnrollmentFormFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
+    tools:context=".views.enrollment.EnrollmentFormFragment">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:id="@+id/layoutEducationLevel">
-        <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:id="@+id/inputEducationLevel"
-            android:hint="Education Level" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,53 +20,176 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
-            android:layout_weight=".4"
-            android:layout_marginRight="5dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:id="@+id/layoutClasses">
-            <AutoCompleteTextView
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layoutSchoolYearFrom"
+            android:layout_marginEnd="5dp"
+            app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                android:id="@+id/inputClasses"
-                android:hint="@string/classes" />
+                android:id="@+id/inputSchoolYearFrom"
+                android:maxLength="4"
+                android:inputType="number"
+                android:hint="School Year From"/>
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:errorEnabled="true"
-            android:layout_marginLeft="5dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:id="@+id/layoutSem">
-            <AutoCompleteTextView
+            android:id="@+id/layoutSchoolYearTo"
+            android:layout_marginStart="5dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"
-                android:id="@+id/inputSem"
-                android:hint="@string/sem" />
+                android:maxLength="4"
+                android:inputType="number"
+                android:id="@+id/inputSchoolYearTo"
+                android:hint="School Year To"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:text="Subjects"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layoutGradeLevel"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/inputGradeLevel"
+                android:maxLength="2"
+                android:inputType="number"
+                android:hint="@string/grade_level_to_enroll"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:listitem="@layout/row_sbjects_1"
-        android:id="@+id/recyclerviewSubjects"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:text="@string/for_learners_in_senior_high_school"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:id="@+id/radioGroup">
+                <RadioButton
+                    android:id="@+id/radioSem1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sem_1"/>
+                <RadioButton
+                    android:id="@+id/radioSem2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sem_2"/>
+            </RadioGroup>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layoutTrack"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/inputTrack"
+                        android:inputType="text"
+                        android:hint="Track"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layoutStrand"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/inputStrand"
+                        android:inputType="text"
+                        android:hint="@string/strand"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonSubmit"
-        android:padding="10dp"
-        android:text="Submit Application"/>
-</LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:text="@string/preffered_distance_learning_modality_ies"/>
+
+        <CheckBox
+            android:id="@+id/checkModularPrint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MODULAR (PRINT)" />
+
+        <CheckBox
+            android:id="@+id/checkModularDigital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MODULAR (DIGITAL)" />
+
+        <CheckBox
+            android:id="@+id/checkOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ONLINE" />
+
+        <CheckBox
+            android:id="@+id/checkEducationTelevision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDUCATION TELEVISION" />
+
+        <CheckBox
+            android:id="@+id/checkRadioBaseInstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RADIO BASE INSTRUCTION" />
+
+        <CheckBox
+            android:id="@+id/checkHomeSchooling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOME SCHOOLING" />
+
+        <CheckBox
+            android:id="@+id/checkBlended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLENDED" />
+
+        <CheckBox
+            android:id="@+id/checkFaceToFace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="FACE TO FACE" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:padding="15dp"
+            android:id="@+id/buttonSubmit"
+            android:layout_marginVertical="10dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

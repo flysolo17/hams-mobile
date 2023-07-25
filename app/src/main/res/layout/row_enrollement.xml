@@ -5,50 +5,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="@color/card">
+
+ >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextTitle"
-                android:id="@+id/textClassTitle"
+                android:layout_weight="1"
+                android:id="@+id/textGradeLevel"
                 android:text="@string/classes"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextSubtitle"
-            android:id="@+id/textStatus"
-            android:textSize="12sp"
-            android:text="@string/classes"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/TextSubtitle"
-
-            android:id="@+id/textEducationLevel"
-            android:text="@string/classes"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
             <TextView
+                android:id="@+id/textStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="@string/sy"/>
+                android:text="status"
+                android:textSize="12sp"
+                android:background="@drawable/rounded_corners"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextSubtitle"
+            android:id="@+id/textTrack"
+            android:text="@string/track"/>
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TextSubtitle"
                 android:id="@+id/textSchoolYear"
-                android:text="@string/classes"/>
-        </LinearLayout>
+                android:text="@string/school_year"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:id="@+id/buttonCancel"
+                app:backgroundTint="#F44336"
+                app:cornerRadius="20dp" />
+
+        </FrameLayout>
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

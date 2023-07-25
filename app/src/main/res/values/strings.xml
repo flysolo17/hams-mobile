@@ -45,4 +45,34 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="contact_type">Contact Type</string>
+    <string name="schedule">Schedule</string>
+    <string name="create_account">Create Account</string>
+    <string name="this_is_your_first_step_with_us">This is your first step with us!</string>
+    <string name="id_number_lrn">ID number (LRN)</string>
+    <string name="hey_students">Hey students!</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="hey_learners">Hey Learners!</string>
+
+    <!-- strings.xml -->
+    <string name="student_name_placeholder">%1$s %2$s %3$s</string>
+    <string name="contacts">Contacts</string>
+    <string name="house_no">House No</string>
+    <string name="barangay">Barangay</string>
+    <string name="street">Street</string>
+    <string name="zip_code">Zip Code</string>
+    <string name="save_address">Save Address</string>
+    <string name="select_address_type">Select Address Type</string>
+    <string name="create_contact">Create Contact</string>
+    <string name="extension_name">Extension Name</string>
+    <string name="grade_level_to_enroll">Grade Level to Enroll</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="for_learners_in_senior_high_school">For Learners in Senior High School</string>
+    <string name="sem_1">Sem 1</string>
+    <string name="sem_2">Sem 2</string>
+    <string name="strand">Strand</string>
+    <string name="preffered_distance_learning_modality_ies">Preffered Distance Learning Modality/ies</string>
+    <string name="school_year">School Year</string>
+    <string name="track">Track</string>
+
 </resources>
