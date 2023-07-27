@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface EnrollmentService {
 
-    @GET("enrollment/")
+    @GET("enrollment/my-enrollments")
     suspend fun getEnrollments(@Header("Authorization") token : String) : Response<List<Enrollment>>
 
 

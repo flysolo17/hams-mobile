@@ -85,7 +85,6 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
 
     override suspend fun getStudentInfo(token: String, result: (UiState<Students>) -> Unit) {
         result.invoke(UiState.LOADING)
-
         if (students == null) {
             delay(1000)
             authService.getStudentData("Bearer $token").enqueue(object : Callback<ResponseData> {
@@ -178,7 +177,6 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             val response = authService.createContact(firstName, middleName, lastName, phone, type ,"Bearer $token")
             if (response.isSuccessful) {
                 val data = response.body()
-
                 data?.let { contact->
                     students?.let {
                         it.contacts?.add(contact)
