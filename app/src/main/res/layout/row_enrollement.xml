@@ -62,6 +62,17 @@
                 app:backgroundTint="#F44336"
                 app:cornerRadius="20dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="update"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                app:backgroundTint="#4CAF50"
+                app:cornerRadius="20dp" />
+
         </FrameLayout>
 
     </LinearLayout>

@@ -7,9 +7,6 @@
         android:title="My Record"
         android:icon="@drawable/ic_record"/>
 
-    <item android:id="@+id/menu_academic"
-        android:title="Academic"
-        android:icon="@drawable/ic_dashboard"/>
     <item android:id="@+id/menu_enrollment"
         android:title="Enrollment"
         android:icon="@drawable/ic_enrollment"/>

@@ -5,28 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".views.enrollment.EnrollmentFragment">
-    <LinearLayout
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/enroll_now"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:id="@+id/buttonEnrollment"
-            android:layout_margin="10dp"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update"
-            android:layout_weight="1"
-            android:padding="10dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:id="@+id/buttonUpdateEnrollment"
-            android:layout_margin="10dp"/>
-    </LinearLayout>
+        android:text="@string/enroll_now"
+        android:padding="10dp"
+        android:enabled="false"
+        android:id="@+id/buttonEnrollment"
+        android:layout_margin="10dp"/>
+
 
     <TextView
         android:layout_width="match_parent"

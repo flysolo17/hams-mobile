@@ -139,6 +139,9 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             if (response.isSuccessful) {
                 val data = response.body() as Address
                 students?.let {
+                    if (it.addresses.isNullOrEmpty()) {
+                        it.addresses = mutableListOf()
+                    }
                     it.addresses?.add(data)
                     result.invoke(UiState.SUCCESS(data))
                 }
@@ -179,6 +182,9 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
                 val data = response.body()
                 data?.let { contact->
                     students?.let {
+                        if (it.contacts.isNullOrEmpty()) {
+                            it.contacts = mutableListOf()
+                        }
                         it.contacts?.add(contact)
                         result.invoke(UiState.SUCCESS(contact))
                     }

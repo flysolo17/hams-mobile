@@ -40,6 +40,11 @@ class EnrollmentAdapter(val context : Context, private val enrollments : List<En
         holder.buttonCancel.setOnClickListener {
             enrollmentClickListener.onCancel(enrollment.id)
         }
+        if (enrollment.grade_level > 6 && enrollment.semester == 1 && enrollment.status == 1) {
+            holder.buttonUpdate.visibility = View.VISIBLE
+        } else {
+            holder.buttonUpdate.visibility = View.GONE
+        }
     }
 
     class EnrollmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,6 +53,6 @@ class EnrollmentAdapter(val context : Context, private val enrollments : List<En
         val textSchoolYear : TextView = itemView.findViewById(R.id.textSchoolYear)
         val textStatus : TextView = itemView.findViewById(R.id.textStatus)
         val buttonCancel : MaterialButton = itemView.findViewById(R.id.buttonCancel)
-
+        val buttonUpdate : MaterialButton = itemView.findViewById(R.id.buttonUpdate)
     }
 }

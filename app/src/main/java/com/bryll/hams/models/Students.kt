@@ -18,8 +18,8 @@ import java.sql.Date
     var birth_date: String?,
     var gender: Int?,
     var nationality: String?,
-    var addresses: MutableList<Address>? = mutableListOf(),
-    var contacts: MutableList<Contacts>? = mutableListOf()
+    var addresses: MutableList<Address> ? = mutableListOf(),
+    var contacts: MutableList<Contacts> ? = mutableListOf()
 ) : Parcelable {
    fun hasNullValues(): Boolean {
       return javaClass.declaredFields

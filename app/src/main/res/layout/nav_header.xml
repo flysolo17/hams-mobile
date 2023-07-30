@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:orientation="horizontal"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="#BBDEFB"
     android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:padding="10dp">
+
     <com.google.android.material.imageview.ShapeableImageView
-        app:shapeAppearance="@style/CornerCut"
+        android:id="@+id/imageProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageProfile"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/profile"
-        />
+        app:shapeAppearance="@style/CornerCut" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/textFullname"
-            android:text="@string/juan_dela_cruz"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="@color/black"/>
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/juan_dela_cruz"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/textStudentID"
-            android:text=""
             style="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/black"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>
