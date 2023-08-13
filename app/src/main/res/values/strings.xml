@@ -74,5 +74,10 @@
     <string name="preffered_distance_learning_modality_ies">Preffered Distance Learning Modality/ies</string>
     <string name="school_year">School Year</string>
     <string name="track">Track</string>
+    <string name="learner_s_info">Learner\'s Info</string>
+    <string name="school_year_from">School Year From</string>
+    <string name="school_year_to">School Year To</string>
+    <string name="addresses">Addresses</string>
+    <string name="enhance_basic_education_enrollment_form">ENHANCE BASIC EDUCATION ENROLLMENT FORM</string>
 
 </resources>

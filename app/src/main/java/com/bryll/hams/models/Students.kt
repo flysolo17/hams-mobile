@@ -10,7 +10,7 @@ import java.sql.Date
  class Students(
     val lrn: String,
     var email: String?,
-    val profile: String?,
+    var profile: String?,
     var first_name: String?,
     var middle_name: String?,
     var last_name: String?,

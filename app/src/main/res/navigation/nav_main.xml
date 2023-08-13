@@ -16,11 +16,6 @@
         android:label="My Record"
         tools:layout="@layout/fragment_record" />
     <fragment
-        android:id="@+id/menu_academic"
-        android:name="com.bryll.hams.views.AcademicFragment"
-        android:label="Academic"
-        tools:layout="@layout/fragment_academic" />
-    <fragment
         android:id="@+id/menu_enrollment"
         android:name="com.bryll.hams.views.enrollment.EnrollmentFragment"
         android:label="Enrollment"
@@ -66,6 +61,9 @@
         android:label="Enrollment Form"
         tools:layout="@layout/fragment_enrollment_form" >
 
+        <argument
+            android:name="student"
+            app:argType="com.bryll.hams.models.Students" />
     </fragment>
     <dialog
         android:id="@+id/menu_logout"

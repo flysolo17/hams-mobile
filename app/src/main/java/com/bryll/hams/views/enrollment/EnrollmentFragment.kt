@@ -41,7 +41,8 @@ class EnrollmentFragment : Fragment() ,EnrollmentAdapter.EnrollmentClickListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonEnrollment.setOnClickListener {
-            findNavController().navigate(R.id.action_menu_enrollment_to_enrollmentFormFragment)
+            val directions = EnrollmentFragmentDirections.actionMenuEnrollmentToEnrollmentFormFragment(student!!)
+            findNavController().navigate(directions)
         }
         enrollmentViewModel.getStudentInfo()
         observers()

@@ -253,7 +253,8 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             val response = authService.uploadFile(filePart,"Bearer $token")
             if (response.isSuccessful) {
                 val data = response.body()
-                data?.let {res->
+                data?.let { res->
+                    students?.profile = res.data.toString()
                     result.invoke(UiState.SUCCESS(res.data.toString()))
                 }
             } else {
